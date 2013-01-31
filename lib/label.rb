@@ -10,6 +10,7 @@ module Rdpl
     FINISH           = 'E'
     DEFAULT_DOT_SIZE = 11
     DEFAULT_HEAT     = 14
+    METRIC           = 'm'
 
     # Creates a new instance of <tt>Rdpl::Label</tt>
     #
@@ -82,6 +83,7 @@ module Rdpl
     {:line           => 'Line',
      :box            => 'Box',
      :barcode        => 'Barcode',
+     :datamatrix     => 'Datamatrix',
      :bitmapped_text => 'BitmappedText'
     }.each_pair do |kind, klass|
       define_method "add_#{kind}" do |&block|
@@ -95,6 +97,7 @@ module Rdpl
     def start(options = {})
       self.state = :open
       command START
+      self << METRIC
       options.each_pair { |option, value| self.send("#{option}=", value) }
       self << formatted_heat
       self << formatted_dot_size

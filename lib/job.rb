@@ -24,7 +24,7 @@ module Rdpl
     # The possible options are:
     #
     # * <tt>:printer</tt> the cups id of the printer to be used. This option is required.
-    # * <tt>:sensor</tt> the type of sensor to be used. Can be one of <tt>Rdpl::Sensor::REFLEXIVE</tt> or <tt>Rdpl::Sensor::EDGE</tt>. This is optional and defaults to <tt>Rdpl::Sensor::EDGE</tt>
+    # * <tt>:sensor</tt> the type of sensor to be used. Can be one of <tt>Rdpl::Sensor::REFLECTIVE</tt> or <tt>Rdpl::Sensor::EDGE</tt>. This is optional and defaults to <tt>Rdpl::Sensor::EDGE</tt>
     # * <tt>:measurement</tt> the measurement system to be used. Can be one of :inches or :metric. For metric, mm will be used as unit. This is optional and defaults to <tt>:inches</tt>.
     def initialize(options = {})
       initialize_options options
@@ -57,7 +57,7 @@ module Rdpl
       @labels << label
       label.job = self
       @contents << label.dump
-      feed
+      #feed
     end
     alias :add_label :<<
 
@@ -73,7 +73,7 @@ module Rdpl
     # The printing process is very simple, Rdpl will create a temp file and issue a <tt>lpr</tt> system 
     # command using the cups printer id and this file. 
     def print
-      tempfile = Tempfile.new 'datamax_label'
+      tempfile = Tempfile.new 'datamax_label', '/Users/tom/Temp/'
       tempfile << dump
       tempfile.close
       Kernel.system "lpr -P #{printer} #{tempfile.path}"

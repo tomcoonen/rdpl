@@ -16,7 +16,7 @@ module Rdpl
   end
 
   module Sensor 
-    REFLEXIVE = 'r'
+    REFLECTIVE = 'r'
     EDGE      = 'e'
   end
 
@@ -31,6 +31,7 @@ require 'label'
 require 'elements/element'
 require 'elements/graphic'
 require 'elements/barcode'
+require 'elements/datamatrix'
 require 'elements/bitmapped_text'
 require 'elements/lines_and_boxes'
 require 'elements/line'

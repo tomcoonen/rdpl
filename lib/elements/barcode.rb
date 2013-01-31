@@ -4,7 +4,7 @@ module Rdpl
     include Element
 
     CODE_128       = 'e'
-    CODE_128_HUMAN = "E"
+    CODE_128_HUMAN = 'E'
 
     alias :wide_bar_multiplier :width_multiplier
     alias :wide_bar_multiplier= :width_multiplier=

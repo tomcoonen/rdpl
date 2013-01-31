@@ -111,6 +111,18 @@ module Rdpl
       @column_position || 0
     end
 
+    def fixed_val
+      ''
+    end
+
+    def formatted_requested_rows
+      ''
+    end
+
+    def formatted_requested_columns
+      ''
+    end
+
     def data=(data)
       @data = data
     end
@@ -121,7 +133,7 @@ module Rdpl
 
     def to_s
       [rotation, font_id, width_multiplier, height_multiplier, formatted_height, 
-        formatted_row_position, formatted_column_position, data].join
+        formatted_row_position, formatted_column_position, fixed_val, formatted_requested_rows, formatted_requested_columns, data].join
     end
 
     private
